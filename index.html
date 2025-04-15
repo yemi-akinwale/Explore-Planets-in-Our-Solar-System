@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First WebApp - Final Project</title>
+    <meta name="description" content="Explore the planets in our solar system and sign up for a trip!">
+    <meta name="keywords" content="planets, solar system, astronomy, travel, space exploration">
+    <meta name="author" content="Opeyemi Akinwale">
+    <meta name="theme-color" content="#007bff">
+    <link rel="icon" href="images/planet icon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/scripts.js"></script>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-4" role="banner">
+        <h1>Explore Planets in our Solar System</h1>
+    </header>
+    <main class="container my-4" role="main">
+        <section aria-labelledby="planet-section">
+            <h2 id="planet-section" class="text-center">Our Awesome & Fascinating Neighbors</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-outline-primary w-100 planet-title" onclick="highlightPlanet(this)">
+                        <h3>Earth</h3>
+                    </button>
+                    <img src="images/EARTH.jpg" alt="Earth" class="img-fluid rounded shadow">
+                    <p>Earth is the third planet from the Sun and the only known celestial body to support life. It has a diverse climate, abundant water, and a protective atmosphere that shields it from harmful solar radiation. Earth's surface is 71% water, making it unique among the planets.</p>
+                    <p>Earth's magnetic field protects it from solar winds, and its atmosphere contains the perfect balance of gases to sustain life. It has one natural satellite, the Moon, which influences tides and stabilizes Earth's axial tilt.</p>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-outline-primary w-100 planet-title" onclick="highlightPlanet(this)">
+                        <h3>Mars</h3>
+                    </button>
+                    <img src="images/Mars.jpg" alt="Mars" class="img-fluid rounded shadow">
+                    <p>Mars is the fourth planet from the Sun and is often called the "Red Planet" due to its reddish appearance caused by iron oxide on its surface. It has the largest volcano in the Solar System, Olympus Mons, and a canyon system, Valles Marineris, that dwarfs the Grand Canyon.</p>
+                    <p>Mars has a thin atmosphere composed mostly of carbon dioxide, with traces of nitrogen and argon. It experiences seasons similar to Earth due to its axial tilt. Scientists are exploring Mars for signs of past or present life, as evidence suggests it once had liquid water on its surface.</p>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-outline-primary w-100 planet-title" onclick="highlightPlanet(this)">
+                        <h3>Jupiter</h3>
+                    </button>
+                    <img src="images/Jupiter.jpg" alt="Jupiter" class="img-fluid rounded shadow">
+                    <p>Jupiter is the fifth and largest planet in our Solar System. It is a gas giant composed primarily of hydrogen and helium. Its most iconic feature is the Great Red Spot, a massive storm that has been raging for centuries.</p>
+                    <p>Jupiter has a strong magnetic field and at least 79 moons, including the four largest, known as the Galilean moons: Io, Europa, Ganymede, and Callisto. Europa, in particular, is of great interest to scientists due to its subsurface ocean, which may harbor conditions suitable for life.</p>
+                </div>
+            </div>
+        </section>
+        <section id="apod-section" class="my-4">
+            <h2 class="text-center">Astronomy Picture of the Day</h2>
+            <div id="apod-container" class="text-center">
+                <a id="apod-link" href="" target="_blank">
+                    <img id="apod-image" src="" alt="Astronomy Picture of the Day" class="img-fluid rounded" style="display: none;">
+                    <iframe id="apod-video" src="" frameborder="0" allowfullscreen class="w-100" style="display: none;"></iframe>
+                </a>
+                <p id="apod-title" class="h5 mt-3"></p>
+                <p id="apod-description" class="text-muted"></p>
+            </div>
+        </section>
+        <section id="weather-container" class="my-4 text-center"></section>
+        <form action="submit.MyFirstWebbApp.php" method="post" id="trip-form" class="bg-light p-4 rounded shadow">
+            <h2 class="text-center">Sign Up for a Trip to Your Favorite Planet</h2>
+            <div class="mb-3">
+                <label for="Name" class="form-label">Full Name:</label>
+                <input type="text" name="Name" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+                <label for="Email" class="form-label">Email:</label>
+                <input type="email" name="Email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="mb-3">
+                <label for="Phone" class="form-label">Mobile Number:</label>
+                <input type="tel" name="Phone" class="form-control" placeholder="Your Phone Number" required>
+            </div>
+            <div class="mb-3">
+                <label for="Planet" class="form-label">Choose a Planet:</label>
+                <select name="Planet" id="Planet" class="form-select" onchange="displayPlanetSummary(); calculateCost();" required>
+                    <option value="Void">-- Select a Planet --</option>
+                    <option value="Earth" data-cost="5340">Earth</option>
+                    <option value="Mars" data-cost="12960">Mars</option>
+                    <option value="Jupiter" data-cost="28540">Jupiter</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="Travelers" class="form-label">Number of Travelers:</label>
+                <select class="form-select" id="Travelers" name="Travelers" onchange="updateTravelerCount(); calculateCost();" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>                
+                <span id="traveler-count">1</span> traveler(s)
+            </div>
+            <div class="mb-3">
+                <label for="TravelPurpose" class="form-label">Purpose of Travel:</label>
+                <div>
+                    <input type="radio" id="tourism" name="TravelPurpose" value="Tourism" required>
+                    <label for="tourism">Tourism</label>
+                </div>
+                <div>
+                    <input type="radio" id="research" name="TravelPurpose" value="Research">
+                    <label for="research">Research</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="Message" class="form-label">Any other relevant information:</label>
+                <textarea name="Message" class="form-control" placeholder="Your message here"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="FundingOptions" class="form-label">How would you like to fund your trip?</label>
+                <select id="FundingOptions" name="FundingOptions" class="form-select" onchange="handleFundingChange()" required>
+                    <option value="">-- Select Funding Option --</option>
+                    <option value="Self-Funding">Self-Funding</option>
+                    <option value="Government Funding">Government Funding</option>
+                </select>
+            </div>
+            <div id="funding-source-container" class="mb-3" style="display: none;">
+                <label for="funding-source" class="form-label">Please specify your funding source:</label>
+                <input type="text" id="funding-source" name="FundingSource" class="form-control" placeholder="Enter funding source">
+            </div>
+            <h3 class="text-center">Total Cost: £<span id="total-cost">0</span></h3>
+            <button type="submit" class="btn btn-primary w-100">Sign-Up</button>
+        </form>
+        <section id="planet-summary" class="my-4 text-center planet-summary"></section>
+    </main>
+    <footer class="bg-primary text-white text-center py-3">
+        <p>&copy; 2025 My First Web App</p>
+    </footer>
+</body>
+</html>

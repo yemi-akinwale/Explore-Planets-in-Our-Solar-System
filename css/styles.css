@@ -1,0 +1,48 @@
+/* General button styles */
+button, .btn-primary {
+    margin-top: 20px;
+    padding: 15px 10px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+}
+
+button:hover, .btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Planet button styles */
+.planet-title {
+    font-size: 1.2rem;
+    border: 2px solid #0056b3;
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.planet-title:hover {
+    transform: scale(1.05);
+    background-color: #0056b3; /* Change background on hover */
+    color: white; /* Change text color on hover */
+}
+
+.planet-title.active {
+    background-color: #7952a7;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.planet-title:focus {
+    outline: 3px solid #ffcc00; /* High-contrast focus outline */
+    outline-offset: 2px;
+}
+
+/* Planet summary styling */
+.planet-summary {
+    font-size: 1.2em;
+    color: #2c3e50;
+}
